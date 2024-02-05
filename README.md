@@ -18,9 +18,7 @@ Expansion
 Requirements: 
 
 - Account ID
-`1386001`
 - Personal Access Token 
-`2518327.pt.3l-fuZzjrSMMLgaCmVjsNS9yDAqpMf5t3N0bPk497wWSH6g1XiWmj5HwO5NLyA7YG9oNAfHOxmz-ctSKCr7-4g`
 
 The Harvest V2 API is a REST API that allows you to interact with your 
 Harvest account programmatically. You can track time, log expenses, create projects, and more.
