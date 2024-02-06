@@ -52,7 +52,10 @@ print(type(json_response))
 # DONE: Set up git and github repo to better keep track of features
 # DONE: Capture json response and clean up unneccessary data (Oppoetunity for pandas perhaps)
 # TODO: Make into proper cli tool
+# TODO: Cron job
+# TODO: Add to Lambda function
+
+
+# Create separate service that takes the JSON and creates PDF
 # TODO: Look into generating pdf with python files (html python templates)
 # TODO: Generate PDF and store in tmp directory
-# TODO: Keep track of dates
-# TODO: Cron job
