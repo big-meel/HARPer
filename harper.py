@@ -33,11 +33,24 @@ response = urllib.request.urlopen(request, timeout=5)
 response_body = response.read().decode("utf-8")
 json_response = json.loads(response_body)
 
-print(json.dumps(json_response, sort_keys=True, indent=4))
+# Only require the following data points grouped by their spent date
+# spent_date (entry['spent_date'])
+# client_name (entry['client']['name])
+# project_name (entry['project']['name])
+# task_name (entry['task']['name'])
+# employee_name (entry['user']['name'])
+# hours (entry['hours'])
+# notes (entry['notes'])
+#
+# total_hours Will need to inject an algo to calculate the total hours
+# Timeframe given dynamically
+
+# print(json.dumps(json_response, indent=4))
+print(type(json_response))
 
 # DONE: Move constants to env variables 
-# TODO: Set up git and github repo to better keep track of features
-# TODO: Capture json response and clean up unneccessary data (Oppoetunity for pandas perhaps)
+# DONE: Set up git and github repo to better keep track of features
+# DONE: Capture json response and clean up unneccessary data (Oppoetunity for pandas perhaps)
 # TODO: Make into proper cli tool
 # TODO: Look into generating pdf with python files (html python templates)
 # TODO: Generate PDF and store in tmp directory
