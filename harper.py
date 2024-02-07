@@ -1,20 +1,35 @@
-import os
+import os, sys
 import json
 import urllib.request
+import argparse
 from dotenv import load_dotenv
 load_dotenv()
 
-# Move these to env variables and access with os.environ.get(HARVEST_ACCOUNT_ID)
 ACCOUNT_ID = os.getenv('HARVEST_ACCOUNT_ID')
 ACCESS_TOKEN = os.getenv('HARVEST_ACCESS_TOKEN')
 API_URL = os.getenv('HARVEST_API_V2_URL')
 
-# Update these dates to be dynamic
-from_date = "20231220"
-to_date = "20240123"
-queries = "from=" + from_date + "&" + "to=" + to_date
+# Initialize parser
+parser = argparse.ArgumentParser(
+  prog='HARPer',
+  description='Fetches time entries from harvest API'
+)
 
-# Fetches time entries
+parser.add_argument('-s', '--start_date', help='The stating date of the time entries requested `yyyymmdd`')
+parser.add_argument('-e', '--end_date', help='The ending date of the time entries requested `yyyymmdd`')
+
+args = parser.parse_args()
+
+if not args.start_date:
+  sys.stderr.write("A starting date is required for this command `--start_date \<yyyy-mm-dd\>`\n")
+  sys.exit()
+
+if not args.end_date:
+  sys.stderr.write("An End date is required for this command `--end_date \<yyyy-mm-dd\>`\n")
+  sys.exit()
+
+queries = "from=" + args.start_date + "&" + "to=" + args.end_date
+
 url = API_URL + "/time_entries?" + queries 
 
 headers = {
@@ -45,14 +60,10 @@ json_response = json.loads(response_body)
 # total_hours Will need to inject an algo to calculate the total hours
 # Timeframe given dynamically
 
-# print(json.dumps(json_response, indent=4))
-print(type(json_response))
+print(json.dumps(json_response, indent=4))
+# print(type(json_response))
 
-# DONE: Move constants to env variables 
-# DONE: Set up git and github repo to better keep track of features
-# DONE: Capture json response and clean up unneccessary data (Oppoetunity for pandas perhaps)
-# TODO: Make into proper cli tool
-# TODO: Cron job
+# TODO: Split core functionality from CLI components (Core to be used in A Lambda function) with OOP?
 # TODO: Add to Lambda function
 
 
