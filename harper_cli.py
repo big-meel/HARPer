@@ -46,8 +46,6 @@ print(report.entries())
 # Timeframe given dynamically
 
 
-# TODO: Split core functionality from CLI components (Core to be used in A Lambda function) with OOP?
-#       Move core functionality along with necessary dependencies to its own module
 # TODO: Add to Lambda function
 
 

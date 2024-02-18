@@ -1,4 +1,3 @@
-import os, sys
 import json
 import urllib.request
 
@@ -15,7 +14,7 @@ class TimeEntryReport:
     response_body = self.__send_request().read().decode("utf-8")
     json_response = json.loads(response_body)
 
-    return json.dumps(json_response, indent=4)
+    return json_response
 
   def __headers(self):
     return {
