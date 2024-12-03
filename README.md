@@ -1,4 +1,4 @@
-Harvest Auto Report Printer (HARPer)
+# Harvest Auto Report Printer (HARPer)
 
 MVP
 
